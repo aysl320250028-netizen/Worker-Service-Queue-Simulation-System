@@ -1,7 +1,9 @@
 #include <iostream>
+#include "Simulation.h"
 using namespace std;
-
 int main() {
     cout << "Queue Simulation System Started..." << endl;
-    return 0;
+     Simulation sim(20, 10);
+      sim.run();
+     return 0;
 }
