@@ -9,10 +9,12 @@ private:
     int time;
     int maxTime;
     Queue queue;
-    Server server;
+
+    Server* servers;
+    int numServers;
 
 public:
-    Simulation(int simTime, int queueSize);
+    Simulation(int simTime, int queueSize, int numServers);
     void run();
 };
 
