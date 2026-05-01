@@ -17,8 +17,6 @@ public:
     int dequeue();
     void display();
        
-    }
-
-};
+    };
 
 #endif
