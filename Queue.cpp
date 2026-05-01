@@ -4,19 +4,16 @@ using namespace std;
 
 Queue::Queue(int size) {
     maxSize = size;
-    arr = new Worker[maxSize];
-    front = 0;
-    rear = -1;
-    count = 0;
-    Worker = new int[maxSize];
+    arr = new int[maxSize];
+    initializeQueue();
+}
+Queue::~Queue() {
+    delete[] arr;
 }
 void Queue::initializeQueue(){
-        front = 0;
-        rear = -1;
-        count = 0;
-        for (int i = 0; i < maxSize; i++){
-            Worker[i] = 0;
-        }
+    front = -1;
+    rear = -1;
+    count = 0;
     cout<< "Queue is initialized!" << endl;
     }
 
@@ -28,27 +25,34 @@ bool Queue::isFull() {
     return count == maxSize;
 }
 
-bool Queue::enqueue(Worker w) {
+void Queue::enqueue(int value) {
     if (isFull()) {
         cout << "Queue is full!\n";
-        return false;
+        return;
+    }
+     if (isEmpty()) {
+        front = 0;
     }
     rear = (rear + 1) % maxSize;
-    arr[rear] = w;
+    arr[rear] = value;
     count++;
-    cout<< item << " is added" << endl;
-        return true;
+    cout<< value << " is added" << endl;
 }
 
-Worker Queue::dequeue() {
+int Queue::dequeue() {
     if (isEmpty()) {
         cout << "Queue is empty!\n";
         return -1;
     }
     int deletedItem = arr[front];
-    arr[front] = 0;
-    front = (front + 1) % maxSize;
+    if (count == 1) {
+        front = -1;
+        rear = -1;
+    } else {
+        front = (front + 1) % maxSize;
+    }
     count--;
+    cout << "Deleted " << deletedItem << " from the queue.\n";
     return deletedItem;
 }
 void Queue::display(){
