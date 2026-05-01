@@ -23,7 +23,7 @@ void initializeQueue();
        
     bool isFull();
     
-    void enqueue(int item);
+    bool enqueue(Worker w);
     Worker dequeue();
     void display();
        
