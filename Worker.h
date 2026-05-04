@@ -6,9 +6,9 @@ public:
     int id;
     int arrivalTime;
     int serviceTime;
-    int startTime;
 
-    Worker(int id = 0, int arrival = 0, int service = 0);
+    Worker(int id, int arrivalTime, int serviceTime);
+    void display() const;
 };
 
 #endif
