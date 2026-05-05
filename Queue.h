@@ -1,22 +1,25 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#include <iostream>
+using namespace std;
 
+template <class Type>
 class Queue {
 private:
     int front, rear, count, maxSize;
-    int* arr;
+    Type* arr;
 
 public:
-    Queue(int size);
+    Queue(int size = 100);
     ~Queue();
     void initializeQueue();
     bool isEmpty();
     bool isFull();
-    void enqueue(int value);
-    int dequeue();
+    void enqueue(Type value);
+    Type dequeue();
+    int getSize();
     void display();
-       
-    };
+};
 
 #endif
