@@ -8,7 +8,7 @@ class Simulation {
 private:
     int time;
     int maxTime;
-    Queue queue;
+   Queue<Worker> queue;
 
     Server* servers;
     int numServers;
