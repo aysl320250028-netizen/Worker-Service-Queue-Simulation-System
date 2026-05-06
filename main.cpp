@@ -60,7 +60,11 @@ int main() {
    Simulation sim2(20, 10, 2);
 //Then say in report:
 //“We compared system performance with different numbers of servers.”
-    sim.run();
+   cout << "\n=== 1 Server ===\n";
+sim1.run();
+
+cout << "\n=== 2 Servers ===\n";
+sim2.run();
     return 0;
 }
 
