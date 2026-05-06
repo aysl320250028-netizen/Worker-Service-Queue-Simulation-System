@@ -7,6 +7,7 @@ public:
     int arrivalTime;
     int serviceTime;
 
+    Worker(); 
     Worker(int id, int arrivalTime, int serviceTime);
     void display() const;
 };
