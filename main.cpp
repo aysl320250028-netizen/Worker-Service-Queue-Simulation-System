@@ -58,7 +58,7 @@ int main() {
     cout << "Queue Simulation System Started..." << endl;
    Simulation sim1(20, 10, 1);
    Simulation sim2(20, 10, 2);
-//Then say in report:
+//in report 
 //“We compared system performance with different numbers of servers.”
    cout << "\n=== 1 Server ===\n";
 sim1.run();
