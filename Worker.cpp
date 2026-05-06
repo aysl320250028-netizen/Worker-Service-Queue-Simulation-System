@@ -12,7 +12,9 @@ Worker::Worker(int id, int arrivalTime, int serviceTime) {
     this->id = id;
     this->arrivalTime = arrivalTime;
     this->serviceTime = serviceTime;
+    this->startTime = 0; 
 }
+
 
 void Worker::display() const {
     cout << "Worker [ID: " << id
