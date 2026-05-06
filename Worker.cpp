@@ -21,4 +21,3 @@ void Worker::display() const {
          << " | Arrival Time: " << arrivalTime
          << " | Service Time: " << serviceTime << "]" << endl;
 }
-
