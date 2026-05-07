@@ -1,5 +1,8 @@
 #include "Queue.h"
 #include <iostream>
+#include <string>
+#include "Worker.h"
+#include <ostream> // add near top
 using namespace std;
 
 template <class Type>
@@ -85,4 +88,15 @@ void Queue<Type>::display() {
     cout << endl;
     cout << "Front: " << front << ", Rear: " << rear << ", Count: " << count
          << ", Maximum size: " << maxSize << endl;
+}
+
+// Explicitly instantiate the template for int and std::string
+template class Queue<int>;
+template class Queue<string>;
+template class Queue<Worker>;
+
+ostream& operator<<(ostream& os, const Worker& w) {
+    os << "Worker ID: " << w.id << ", Arrival Time: " << w.arrivalTime 
+       << ", Service Time: " << w.serviceTime << ", Start Time: " << w.startTime;
+    return os;
 }
