@@ -1,50 +1,62 @@
 #include "Queue.h"
 #include <iostream>
+#include <string>
+#include "Worker.h"
+#include <ostream> // add near top
 using namespace std;
 
-Queue::Queue(int size) {
+template <class Type>
+Queue<Type>::Queue(int size) {
     maxSize = size;
-    arr = new int[maxSize];
+    arr = new Type[maxSize];
     initializeQueue();
 }
-Queue::~Queue() {
+
+template <class Type>
+Queue<Type>::~Queue() {
     delete[] arr;
 }
-void Queue::initializeQueue(){
+
+template <class Type>
+void Queue<Type>::initializeQueue() {
     front = -1;
     rear = -1;
     count = 0;
-    cout<< "Queue is initialized!" << endl;
-    }
+    cout << "Queue is initialized!" << endl;
+}
 
-bool Queue::isEmpty() {
+template <class Type>
+bool Queue<Type>::isEmpty() {
     return count == 0;
 }
 
-bool Queue::isFull() {
+template <class Type>
+bool Queue<Type>::isFull() {
     return count == maxSize;
 }
 
-void Queue::enqueue(int value) {
+template <class Type>
+void Queue<Type>::enqueue(Type value) {
     if (isFull()) {
         cout << "Queue is full!\n";
         return;
     }
-     if (isEmpty()) {
+    if (isEmpty()) {
         front = 0;
     }
     rear = (rear + 1) % maxSize;
     arr[rear] = value;
     count++;
-    cout<< value << " is added" << endl;
+    cout << value << " is added" << endl; 
 }
 
-int Queue::dequeue() {
+template <class Type>
+Type Queue<Type>::dequeue() {
     if (isEmpty()) {
         cout << "Queue is empty!\n";
-        return -1;
+        return Type();
     }
-    int deletedItem = arr[front];
+    Type deletedItem = arr[front];
     if (count == 1) {
         front = -1;
         rear = -1;
@@ -55,18 +67,36 @@ int Queue::dequeue() {
     cout << "Deleted " << deletedItem << " from the queue.\n";
     return deletedItem;
 }
-void Queue::display(){
-        if (isEmpty()){
-            cout<< "The queue is empty" << endl;
-            return;
-        }
-        cout<< "The queue contents are (from front to rear):" << endl;
-        int index = front;
-        for(int i = 0; i < count; i++){
-            cout<< arr[index] << " ";
-            index = (index + 1) % maxSize;
-        }
-        cout<< endl;
-        cout<< "Front: " << front << ", Rear: " << rear << ", Count: " << count
-        << ", Maximum size: " << maxSize << endl;
+
+template <class Type>
+int Queue<Type>::getSize() {
+    return count;
+}
+
+template <class Type>
+void Queue<Type>::display() {
+    if (isEmpty()) {
+        cout << "The queue is empty" << endl;
+        return;
     }
+    cout << "The queue contents are (from front to rear):" << endl;
+    int index = front;
+    for (int i = 0; i < count; i++) {
+        cout << arr[index] << " ";
+        index = (index + 1) % maxSize;
+    }
+    cout << endl;
+    cout << "Front: " << front << ", Rear: " << rear << ", Count: " << count
+         << ", Maximum size: " << maxSize << endl;
+}
+
+// Explicitly instantiate the template for int and std::string
+template class Queue<int>;
+template class Queue<string>;
+template class Queue<Worker>;
+
+ostream& operator<<(ostream& os, const Worker& w) {
+    os << "Worker ID: " << w.id << ", Arrival Time: " << w.arrivalTime 
+       << ", Service Time: " << w.serviceTime << ", Start Time: " << w.startTime;
+    return os;
+}

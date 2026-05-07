@@ -19,6 +19,7 @@ public:
     void enqueue(Type value);
     Type dequeue();
     int getSize();
+    int getSize();    
     void display();
 };
 
