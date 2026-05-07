@@ -5,7 +5,7 @@
 using namespace std;
 int main() {
     //Queue part:
-   Queue q(5);
+   Queue<int> q(5);
     cout << "Is queue empty? " << (q.isEmpty() ? "Yes" : "No") << endl;
     q.enqueue(10);
     q.enqueue(20);
@@ -39,7 +39,7 @@ int main() {
     }
 
     cout << "\n=== Queueing Workers by Arrival Time ===" << endl;
-    Queue workerQueue(NUM_WORKERS);
+    Queue<int> workerQueue(NUM_WORKERS); // use template parameter and declare once
 
     for (int i = 0; i < NUM_WORKERS; i++) {
         workerQueue.enqueue(workers[i].id);
@@ -48,6 +48,7 @@ int main() {
     workerQueue.display();
 
     cout << "\n=== Serving Workers ===" << endl;
+    // no redeclaration here — reuse the same workerQueue
     while (!workerQueue.isEmpty()) {
         int servedID = workerQueue.dequeue();
         cout << "Serving Worker ID: " << servedID
@@ -67,4 +68,3 @@ cout << "\n=== 2 Servers ===\n";
 sim2.run();
     return 0;
 }
-
