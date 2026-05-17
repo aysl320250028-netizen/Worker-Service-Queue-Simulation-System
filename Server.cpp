@@ -28,6 +28,7 @@ bool Server::assignWorker(const Worker& w, int currentTime) {
     busy = true;
     currentWorker = w;
     currentWorker.startTime = currentTime;
+    assignWorker();
     remainingTime = w.serviceTime;
     return true;
 }
