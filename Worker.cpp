@@ -6,6 +6,7 @@ Worker::Worker() {  //default constructor
     id = 0;
     arrivalTime = 0;
     serviceTime = 0;
+     startTime = 0;
 }
 
 Worker::Worker(int id, int arrivalTime, int serviceTime) {
