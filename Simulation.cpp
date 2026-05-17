@@ -30,6 +30,10 @@ void Simulation::run() {
         if (time % 2 == 0) {
             Worker w(workerID++, time, 3);
             queue.enqueue(w);
+            if (queue.getSize() > maxQueueLength) {
+        maxQueueLength = queue.getSize();
+    }
+
             cout << "Worker " << w.id << " arrived\n";
         }
 
